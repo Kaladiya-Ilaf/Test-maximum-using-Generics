@@ -27,4 +27,17 @@ public class TestMaximum {
             return floatNum3;
         }
     }
+
+    public String findMaximumString(String stringValue1, String stringValue2, String stringValue3) {
+        if (stringValue1.compareTo(stringValue2) > 0 && stringValue1.compareTo(stringValue3) > 0) {
+            return stringValue1;
+        }
+        else if (stringValue2.compareTo(stringValue3) > 0){
+            return stringValue2;
+        }
+        else {
+            return stringValue3;
+        }
+
+    }
 }
