@@ -1,30 +1,33 @@
 package com.TestMaximum;
 
-public class TestMaximum {
+public class TestMaximum<E extends Comparable<E>> {
+    E value1;
+    E value2;
+    E value3;
 
-    public Integer findMaximumInteger( Integer intNum1, Integer intNum2, Integer intNum3) {
+    TestMaximum(){
 
-        if ((intNum1.compareTo(intNum2) > 0) && intNum1.compareTo(intNum3) > 0) {
-            return intNum1;
-        }
-        else if (intNum2.compareTo(intNum3) > 0){
-            return intNum2;
-        }
-        else {
-            return intNum3;
-        }
+    }
+    TestMaximum(E value1, E value2, E value3){
+        this.value1 = value1;
+        this.value2 = value2;
+        this.value3 = value3;
     }
 
-    public Float findMaximumFloat( Float floatNum1, Float floatNum2, Float floatNum3) {
+    public E findMaximum(){
+        return findMaximumValue(value1, value2, value3);
+    }
 
-        if ((floatNum1.compareTo(floatNum2) > 0) && floatNum1.compareTo(floatNum3) > 0) {
-            return floatNum1;
+    public <E extends Comparable> E findMaximumValue(E value1, E value2, E value3){
+        if (value1.compareTo(value2) > 0 && value1.compareTo(value3) > 0){
+            return value1;
         }
-        else if (floatNum2.compareTo(floatNum3) > 0){
-            return floatNum2;
+        else if (value2.compareTo(value3) > 0){
+            return value2;
         }
         else {
-            return floatNum3;
+            return value3;
         }
+
     }
 }
