@@ -1,33 +1,41 @@
 package com.TestMaximum;
 
 public class TestMaximum<E extends Comparable<E>> {
-    E value1;
-    E value2;
-    E value3;
 
-    TestMaximum(){
+    int arrayLength;
+    E[] inputArray;
+
+    TestMaximum() {
 
     }
-    TestMaximum(E value1, E value2, E value3){
-        this.value1 = value1;
-        this.value2 = value2;
-        this.value3 = value3;
+
+    TestMaximum(E[] inputArray, int arrayLength) {
+        this.inputArray = inputArray;
+        this.arrayLength = arrayLength;
     }
 
-    public E findMaximum(){
-        return findMaximumValue(value1, value2, value3);
+    public E findMaximum() {
+        return findMaximumValue(inputArray, arrayLength);
     }
 
-    public <E extends Comparable> E findMaximumValue(E value1, E value2, E value3){
-        if (value1.compareTo(value2) > 0 && value1.compareTo(value3) > 0){
-            return value1;
+    public <E extends Comparable> E findMaximumValue(E[] inputArray, int arrayLength) {
+        E max = inputArray[0];
+        
+        for (int i = 1; i < arrayLength; i++) {
+            if (inputArray[i].compareTo(max) > 0) {
+                max = inputArray[i];
+            }
         }
-        else if (value2.compareTo(value3) > 0){
-            return value2;
-        }
-        else {
-            return value3;
-        }
+        return max;
+    }
 
+    public static void main(String[] args) {
+        Integer[] integerArray = {10 , 8, 9};
+        Float[] floatArray = {2.5f,1.2f, 0.6f};
+        String[] stringArray = {"Tom","Jerry","Noddy"};
+        
+        new TestMaximum(integerArray, integerArray.length).findMaximum();
+        new TestMaximum(floatArray, floatArray.length).findMaximum();
+        new TestMaximum(stringArray, stringArray.length).findMaximum();
     }
 }
